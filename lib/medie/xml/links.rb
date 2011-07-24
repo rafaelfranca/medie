@@ -1,15 +1,15 @@
+require 'active_support/core_ext/array/wrap'
+
 module Medie
   module Xml
     class Links
-  
-      def initialize(links)
+      def initialize(links=nil)
         @hash = {}
-        links = [links] unless links.kind_of? Array
-        links = [] unless links
-        links.each { |l|
+
+        Array.wrap(links).each do |l|
           link = Medie::Link.new(l)
           @hash[link.rel.to_s] = link
-        }
+        end
       end
 
       def [](name)
