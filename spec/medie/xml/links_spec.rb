@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Medie::Xml::Links do
-  describe '#initialize' do
+  context 'when create a new link collection' do
     context 'without arguments' do
       subject { Medie::Xml::Links.new }
 
@@ -58,11 +58,11 @@ describe Medie::Xml::Links do
     end
   end
 
-  context 'try to access a link by rel' do
+  context 'when try to access a link by rel' do
     context "that doesn't exist" do
       subject { Medie::Xml::Links.new }
 
-      it 'return nil' do
+      it 'returns nil' do
         subject['test'].should_not be
       end
     end
